@@ -22,5 +22,12 @@ async def on_ready():
 async def q5(ctx):
     await ctx.send("@here QUEUE STARTING IN 5 MINUTES")
 
+extensions = [
+    "cogs.miscellaneous",
+]
+
+if __name__ == "__main__":
+    for ext in extensions:
+        bot.load_extension(ext)
 
 bot.run(TOKEN)
