@@ -22,7 +22,8 @@ async def q5(ctx):
     await ctx.send("@here QUEUE STARTING IN 5 MINUTES")
 
 extensions = [
-    "cogs.miscellaneous"
+    "cogs.miscellaneous",
+    "cogs.soundboard"
 ]
 if __name__ == "__main__":
     for ext in extensions:
