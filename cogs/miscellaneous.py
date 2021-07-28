@@ -1,9 +1,6 @@
 import discord
 from discord.ext import commands
-from discord.ext.commands.converter import VoiceChannelConverter
-import youtube_dl
 import time
-import ffmpeg
 
 
 class Misc(commands.Cog):
@@ -30,16 +27,13 @@ class Misc(commands.Cog):
         if voice_channel != None:
             vc = await voice_channel.connect()
             vc.play(discord.FFmpegPCMAudio('DAM_BOI_HE_THICC.mp3'))
-
-            # vc.play(discord.FFmpegPCMAudio("DAM_BOI_HE_THICC.mp3"))
-            # Sleep while audio is playing.
-        #     while vc.is_playing():
-        #         time.sleep(.1)
-        #     await vc.disconnect()
-        # else:
-        #     await ctx.send(str(ctx.author.name) + "is not in a channel.")
-        # # Delete command after the audio is done playing.
-        # await ctx.message.delete()
+            while vc.is_playing():
+                time.sleep(.1)
+            await vc.disconnect()
+        else:
+            await ctx.send(str(ctx.author.name) + "is not in a channel.")
+        # Delete command after the audio is done playing.
+        await ctx.message.delete()
 
 
 def setup(bot):
