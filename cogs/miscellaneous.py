@@ -49,9 +49,9 @@ class Misc(commands.Cog):
         # Delete command after the audio is done playing.
         await ctx.message.delete()
 
-    @commands.command(name="sheesh")
-    async def sheesh(self, ctx):
-        await ctx.send(file=discord.File('res/img/BaNayNay1.jpeg'))
+    @commands.command(name="Banaynay")
+    async def Banaynay(self, ctx):
+        await ctx.send(file=discord.File('res/img/animoles/BaNayNay1.jpeg'))
 
 
 def setup(bot):
