@@ -53,6 +53,10 @@ class Misc(commands.Cog):
     async def Banaynay(self, ctx):
         await ctx.send(file=discord.File('res/img/animoles/BaNayNay1.jpeg'))
 
+    @commands.command(name="sb")
+    async def sb(self, ctx):
+        await ctx.send(file=discord.File('res/img/animoles/BaNayNay1.jpeg'))
+
 
 def setup(bot):
     bot.add_cog(Misc(bot))
