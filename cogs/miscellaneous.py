@@ -4,6 +4,7 @@ import time
 from PIL import Image, ImageDraw, ImageFont
 import requests
 from io import BytesIO
+import PIL
 
 
 class Misc(commands.Cog):
@@ -62,6 +63,7 @@ class Misc(commands.Cog):
             user = ctx.author
         response = requests.get(user.avatar_url)
         url = Image.open(BytesIO(response.content)).convert('RGBA')
+        url.thumbnail([200, 200], PIL.Image.ANTIALIAS)
         # if not user:
         #     user = ctx.author
         # if user.is_avatar_animated():
@@ -79,7 +81,7 @@ class Misc(commands.Cog):
                 salt_bae.seek(num)
                 text_img = Image.new('RGBA', (512, 512), (0, 0, 0, 0))
                 text_img.paste(salt_bae, (0, 0))
-                text_img.paste(url, (0, 0), mask=url)
+                text_img.paste(url, (65, 312), mask=url)
                 frames.append(text_img)
 
             frames[0].save('out.gif',
