@@ -1,9 +1,8 @@
-
-from discord import Embed
 import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 import os
+import youtube_dl
 
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
@@ -22,5 +21,10 @@ async def on_ready():
 async def q5(ctx):
     await ctx.send("@here QUEUE STARTING IN 5 MINUTES")
 
-
+extensions = [
+    "cogs.miscellaneous"
+]
+if __name__ == "__main__":
+    for ext in extensions:
+        bot.load_extension(ext)
 bot.run(TOKEN)
