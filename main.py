@@ -23,7 +23,8 @@ async def q5(ctx):
 
 extensions = [
     "cogs.miscellaneous",
-    "cogs.soundboard"
+    "cogs.soundboard",
+    "cogs.img_manip"
 ]
 if __name__ == "__main__":
     for ext in extensions:
