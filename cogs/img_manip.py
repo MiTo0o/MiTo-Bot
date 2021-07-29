@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from PIL import Image
+from PIL import Image, ImageOps, ImageDraw
 import requests
 from io import BytesIO
 import PIL
@@ -15,14 +15,20 @@ class Img_manip(commands.Cog):
         if not user:
             user = ctx.author
         response = requests.get(user.avatar_url)
-        url = Image.open(BytesIO(response.content)).convert('RGBA')
-        url.thumbnail([200, 200], PIL.Image.ANTIALIAS)
+        im = Image.open(BytesIO(response.content)).convert('RGBA')
+        im.thumbnail([200, 200], PIL.Image.ANTIALIAS)
         # if not user:
         #     user = ctx.author
         # if user.is_avatar_animated():
         #     url = user.avatar_url_as(format="gif")
         # if not user.is_avatar_animated():
         #     url = user.avatar_url_as(static_format="png")
+        bigsize = (im.size[0] * 3, im.size[1] * 3)
+        mask = Image.new('L', bigsize, 0)
+        draw = ImageDraw.Draw(mask)
+        draw.ellipse((0, 0) + bigsize, fill=255)
+        mask = mask.resize(im.size, Image.ANTIALIAS)
+        im.putalpha(mask)
 
         gif_file = "res/gifs/salt_bae_loop.gif"
         salt_bae = Image.open(gif_file, 'r')
@@ -34,7 +40,7 @@ class Img_manip(commands.Cog):
                 salt_bae.seek(num)
                 text_img = Image.new('RGBA', (512, 512), (0, 0, 0, 0))
                 text_img.paste(salt_bae, (0, 0))
-                text_img.paste(url, (65, 312), mask=url)
+                text_img.paste(im, (65, 312), mask=im)
                 frames.append(text_img)
 
             frames[0].save('out.gif',
