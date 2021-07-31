@@ -8,7 +8,7 @@ class SendImg(commands.Cog):
 
     @commands.command(name="fc1")
     async def fc1(self, ctx):
-        await ctx.send(file=discord.File('res/img/blursed/face_swap1.jpeg'))
+        await ctx.send(file=discord.File('res/img/blursed/face_swap_1.jpeg'))
 
     @commands.command(name="catsmile")
     async def catsmile(self, ctx):
@@ -20,7 +20,7 @@ class SendImg(commands.Cog):
 
     @commands.command(name="confusion")
     async def confusion(self, ctx):
-        await ctx.send(file=discord.File('res/img/reee_action/confusion_1.jped'))
+        await ctx.send(file=discord.File('res/img/reee_action/confusion_1.jpeg'))
 
 
 def setup(bot):
