@@ -25,7 +25,8 @@ extensions = [
     "cogs.miscellaneous",
     "cogs.soundboard",
     "cogs.img_manip",
-    "cogs.reaction"
+    "cogs.reaction",
+    "cogs.sending_img"
 ]
 if __name__ == "__main__":
     for ext in extensions:
