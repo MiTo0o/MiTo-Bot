@@ -2,13 +2,13 @@ import discord
 from discord.ext import commands
 from dotenv import load_dotenv
 import os
-import youtube_dl
+from discord_slash import SlashCommand
 
 load_dotenv()
 TOKEN = os.getenv("DISCORD_TOKEN")
 
-bot = commands.Bot(command_prefix=".")
-# slash = SlashCommand(bot)
+bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
+slash = SlashCommand(bot, sync_commands=True)
 
 
 @bot.event
@@ -17,9 +17,9 @@ async def on_ready():
     await bot.change_presence(activity=discord.Game(name="/help"))
 
 
-@bot.command()
-async def q5(ctx):
-    await ctx.send("@here QUEUE STARTING IN 5 MINUTES")
+@slash.slash(name="test")
+async def test(ctx):
+    await ctx.send("OKAYY!!")
 
 extensions = [
     "cogs.miscellaneous",
@@ -31,4 +31,5 @@ extensions = [
 if __name__ == "__main__":
     for ext in extensions:
         bot.load_extension(ext)
+
 bot.run(TOKEN)
