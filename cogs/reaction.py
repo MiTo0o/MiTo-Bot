@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-from discord_slash import cog_ext, SlashContext
 from discord_slash.utils.manage_commands import create_option
 import random
 
@@ -30,14 +29,10 @@ class Reaction(commands.Cog):
         else:
             await ctx.send(name)
 
-    @cog_ext.cog_slash(name="shook")
-    #    options=[
-    #        create_option(
-    #            name="random",
-    #            description="random gif/pic",
-    #        )
-    #    ])
-    async def shook(self, ctx: SlashContext):
+    # "SPAIN"[1:] slash command doesnt have a ctx.message ;( pain
+
+    @commands.command(name="shook")
+    async def shook(self, ctx):
         await ctx.message.delete()
         pic_gif = "res/img/reee_action/" + random.choice(shook)
         if ctx.message.reference is not None:
