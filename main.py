@@ -17,6 +17,10 @@ async def on_ready():
     await bot.change_presence(activity=discord.Game(name="/help"))
 
 
+@slash.slash(name="test")
+async def test(ctx):
+    await ctx.send("OKAYY!!")
+
 extensions = [
     "cogs.miscellaneous",
     "cogs.soundboard",

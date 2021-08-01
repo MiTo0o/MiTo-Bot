@@ -15,13 +15,17 @@ class SendImg(commands.Cog):
     async def catsmile(self, ctx: SlashContext):
         await ctx.send(file=discord.File('res/gifs/cat_smile_nod.gif'))
 
-    @cog_ext.cog_subcommand(name="turt")
+    @cog_ext.cog_slash(name="turt")
     async def turt(self, ctx: SlashContext):
         await ctx.send(file=discord.File('res/img/blursed/turtle_in_horse_nose.jpeg'))
 
-    @cog_ext.cog_subcommand(name="confusion")
+    @cog_ext.cog_slash(name="confusion")
     async def confusion(self, ctx: SlashContext):
         await ctx.send(file=discord.File('res/img/reee_action/confusion_1.jpeg'))
+
+    @cog_ext.cog_slash(name="BaNayNay")
+    async def BaNayNay(self, ctx: SlashContext):
+        await ctx.send(file=discord.File('res/img/animoles/BaNayNay1.jpeg'))
 
 
 def setup(bot):

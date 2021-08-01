@@ -11,10 +11,6 @@ class Misc(commands.Cog):
     async def ping(self, ctx):
         await ctx.send("🏓 Pong!")
 
-    @cog_ext.cog_slash(name="BaNayNay")
-    async def _BaNayNay(self, ctx: SlashContext):
-        await ctx.send(file=discord.File('res/img/animoles/BaNayNay1.jpeg'))
-
 
 def setup(bot):
     bot.add_cog(Misc(bot))
